@@ -1,3 +1,6 @@
+import appDownload from "../assets/appDownload.png";
+import landing from "../assets/landing.png";
+
 function HomePage() {
   return (
     <div className="flex flex-col gap-12">
@@ -8,7 +11,7 @@ function HomePage() {
         <span className="text-xl">Food is just a click away</span>
       </div>
       <div className="grid md:grid-cols-2 gap-5">
-        <img src="" alt="" />
+        <img src={landing} alt="landingImage" />
         <div className="flex flex-col items-center justify-center gap-4 text-center">
           <span className="font-bold text-3xl tracking-tighter">
             Order takeaway even faster!
@@ -17,6 +20,7 @@ function HomePage() {
             Download the HappyEats App for faster ordering and personalised
             recommendations
           </span>
+          <img src={appDownload} alt="appDownloadImage" />
         </div>
       </div>
     </div>
