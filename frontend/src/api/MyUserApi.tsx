@@ -39,7 +39,7 @@ export const useCreateMyUser = () => {
     isSuccess,
   };
 };
-type updateMyUserRequest = {
+type UpdateMyUserRequest = {
   name: string;
   addressLine1: string;
   city: string;
@@ -49,8 +49,8 @@ type updateMyUserRequest = {
 export const useUpdateMyUser = () => {
   const { getAccessTokenSilently } = useAuth0();
 
-  const updateMyUserRequest = async (formData: updateMyUserRequest) => {
-    const accessToken = getAccessTokenSilently();
+  const updateMyUserRequest = async (formData: UpdateMyUserRequest) => {
+    const accessToken = await getAccessTokenSilently();
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {
       method: "PUT",
       headers: {
