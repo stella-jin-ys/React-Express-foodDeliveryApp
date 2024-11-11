@@ -1,9 +1,14 @@
-import { useUpdateMyUser } from "@/api/MyUserApi";
+import { useGetMyUser, useUpdateMyUser } from "@/api/MyUserApi";
 import UserProfileForm from "@/forms/user-profile-form/UserProfileForm";
 
 function UserProfilePage() {
-  const { updateUser, isLoading } = useUpdateMyUser();
-  return <UserProfileForm onSave={updateUser} isLoading={isLoading} />;
+  const { currentUser, isLoading: isGetLoading } = useGetMyUser();
+  const { updateUser, isLoading: isUpdateLoading } = useUpdateMyUser();
+
+  if (isGetLoading) {
+    return <span>Loading...</span>;
+  }
+  return <UserProfileForm onSave={updateUser} isLoading={isUpdateLoading} />;
 }
 
 export default UserProfilePage;
