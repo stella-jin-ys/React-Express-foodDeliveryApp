@@ -13,6 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import LoadingButton from "@/components/LoadingButton";
 import { Button } from "@/components/ui/button";
+import { User } from "@/types";
 
 const formSchema = z.object({
   email: z.string().optional(),
@@ -25,13 +26,15 @@ const formSchema = z.object({
 type UserFormData = z.infer<typeof formSchema>;
 
 type Props = {
+  currentUser: User;
   onSave: (userProfileData: UserFormData) => void;
   isLoading: boolean;
 };
 
-function UserProfileForm({ onSave, isLoading }: Props) {
+function UserProfileForm({ onSave, isLoading, currentUser }: Props) {
   const form = useForm<UserFormData>({
     resolver: zodResolver(formSchema),
+    defaultValues: currentUser,
   });
   return (
     <Form {...form}>
